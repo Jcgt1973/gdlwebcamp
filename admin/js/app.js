@@ -1,0 +1,74 @@
+$(document).ready(function () {
+    $('.sidebar-menu').tree()
+
+        
+          $('#registros').DataTable({
+            'paging'      : true,
+            'pageLength'  : 10,
+            'lengthChange': false,
+            'searching'   : true,
+            'ordering'    : true,
+            'info'        : true,
+            'autoWidth'   : false,
+            'language'    : {
+                paginate  : {
+                    next: 'Siguiente',
+                    previous: 'Anterior',
+                    last: 'Último',
+                    first: 'Primero'
+                },
+                info: 'Mostrando _START_ a _END_ de _TOTAL_ resultados',
+                emptyTable: "No hay registros",
+                infoEmpty: "0 Registros",
+                search: 'Buscar:  '
+            }
+
+    });
+
+    $('#crear_registro_admin').attr('disabled', true);
+
+
+    $('#repetir_password').on('input', function() {
+                
+        var password_nuevo = $('#password').val();
+
+        if($(this).val() == $('#password').val()) {
+
+            $('#resultado_password').text('Correcto');
+            $('#resultado_password').parents('.form-group').addClass('has-success').removeClass('has-error');
+            $('input#password').parents('.form-group').addClass('has-success').removeClass('has-error');
+            $('#crear_registro_admin').attr('disabled', false);
+        } else {
+            $('#resultado_password').text('No son iguales');
+            $('#resultado_password').parents('.form-group').addClass('has-error').removeClass('has-success');
+            $('input#password').parents('.form-group').addClass('has-error').removeClass('has-success');
+        }
+    });
+
+    $('#nivel').on('input', function() {
+        if($(this).val() == 1) {
+            $('#nivel-admin').text('Administrador Total');
+            $('#nivel-admin').parents('.form-group').addClass('has-success').removeClass('has-error');
+                        
+        }else {
+            $('#nivel-admin').text('Administrador Parcial');
+            $('#nivel-admin').parents('.form-group').addClass('has-error').removeClass('has-success');
+        }
+
+    })
+
+    $('#fecha_evento').datepicker({
+        autoclose: true
+      });
+    
+    $('.seleccionar').select2();
+
+    $('.timepicker').timepicker({
+        showInputs: false
+      });
+
+
+    $('#icono').iconpicker();
+   
+})
+
