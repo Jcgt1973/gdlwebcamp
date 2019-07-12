@@ -116,6 +116,7 @@ if($_POST['registro'] == 'eliminar'){
     
 
     $id_borrar = $_POST['id'];
+   
 
     try {
         $stmt = $conn->prepare('DELETE FROM invitados WHERE invitado_id = ?');
@@ -145,7 +146,7 @@ function BorrarImagen() {
 
     $directorio = "../img/invitados/";
     $imagen_actual= $_POST['url_imagen'];
-    $imagen_borrar = $directorio+$imagen_actual;
-    unlink($imagen_borrar);  
+    $imagen_borrar = $directorio.$imagen_actual;
+    unlink($directorio . $imagen_actual);  
    
 }
